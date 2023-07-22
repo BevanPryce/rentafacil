@@ -32,6 +32,12 @@ jobs:
     runs-on: windows-latest # For Linux, use ubuntu-latest
     environment: dev
     steps:
+    # Acción de inicio de sesión de Azure para proporcionar las credenciales de autenticación
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@v3
 
