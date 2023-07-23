@@ -19,7 +19,14 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
             <scope>provided</scope>
-        </dependency>
+         </dependency>
+         <!-- Tomcat Embedded (for Azure deployment) -->
+         <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>8.5</version>
+            <scope>provided</scope>
+         </dependency>
     </dependencies>
     
     <!-- Configuración del plugin de compilación -->
