@@ -10,12 +10,6 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <properties>
-        <!-- Java version -->
-        <java.version>1.8</java.version>
-        <!-- Tomcat version -->
-        <tomcat.version>8.5</tomcat.version>
-    </properties>
     
     <!-- Dependencias del proyecto -->
     <dependencies>
@@ -24,31 +18,6 @@
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>3.8.2</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- JSTL (JavaServer Pages Standard Tag Library) -->
-        <dependency>
-            <groupId>javax.servlet.jsp.jstl</groupId>
-            <artifactId>javax.servlet.jsp.jstl-api</artifactId>
-            <version>1.2.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>javax.servlet.jsp.jstl</artifactId>
-            <version>1.2.7</version>
-        </dependency>
-
-        <!-- Tomcat Embedded (for Azure deployment) -->
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-core</artifactId>
-            <version>8.5</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-jasper</artifactId>
-            <version>8.5</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -75,7 +44,6 @@
                 <configuration>
                     <!-- Nombre del archivo WAR generado -->
                     <warName>rentafacil</warName>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
                     <!-- Ruta relativa al archivo web.xml si no está en la ubicación predeterminada -->
                     <!-- <webXml>src/main/webapp/WEB-INF/web.xml</webXml> -->
                 </configuration>
