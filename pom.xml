@@ -5,7 +5,7 @@
     <groupId>renta_facil</groupId>
     <artifactId>rentafacilito</artifactId>
     <version>1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
     <name>Java on Azure Examples Project</name>    
     <build>
         <pluginManagement>
