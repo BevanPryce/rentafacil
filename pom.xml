@@ -3,9 +3,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>renta_facil</groupId>
-    <artifactId>rentafacilito</artifactId>
+    <artifactId>rentafacil</artifactId>
     <version>1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
     <name>Java on Azure Examples Project</name>    
     <build>
         <pluginManagement>
@@ -142,4 +142,104 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <springboot.version>2.3.8.RELEASE</springboot.version>
     </properties>
+</project>
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         
+    <!-- Información básica del proyecto -->
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>renta_facil</groupId>
+    <artifactId>rentafacil</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    
+    <!-- Dependencias del proyecto -->
+    <dependencies>
+        <!-- Dependencia de Servlet API para JSP -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+         </dependency>
+         <!-- Dependencia de Servlet API para JSP -->
+         <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
+            <version>8.5.82</version>
+            <scope>provided</scope>
+         </dependency>
+        <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.microsoft.azure.functions</groupId>
+                <artifactId>azure-functions-java-library</artifactId>
+                <version>2.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-web-api</artifactId>
+                <version>8.0.1</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    </dependencies>
+    
+    <!-- Configuración del plugin de compilación -->
+    <build>
+        <plugins>
+            <!-- Plugin de compilación para Java -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <inherited>True</inherited>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            
+            <!-- Plugin de construcción de archivo WAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+                <configuration>
+                    <!-- Nombre del archivo WAR generado -->
+                    <warName>rentafacil</warName>
+                    <!-- Ruta relativa al archivo web.xml si no está en la ubicación predeterminada -->
+                    <!-- <webXml>src/main/webapp/WEB-INF/web.xml</webXml> -->
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <inherited>true</inherited>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            
+            <!-- Plugin de despliegue a Azure (Azure Web Apps) -->
+            <plugin>
+                <groupId>com.microsoft.azure</groupId>
+                <artifactId>azure-webapp-maven-plugin</artifactId>
+                <version>1.16.0</version>
+                <configuration>
+                    <!-- Nombre único para el recurso de Azure (letras minúsculas y números, sin espacios) -->
+                    <appName>rentafacil</appName>
+                    <!-- Grupo de recursos de Azure al que se debe asignar la aplicación -->
+                    <resourceGroup>renta_facil</resourceGroup>
+                    <!-- Plan de servicio de Azure (Azure App Service Plan) -->
+                    <appServicePlanName>ASP-rentafacil-b3d8</appServicePlanName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
